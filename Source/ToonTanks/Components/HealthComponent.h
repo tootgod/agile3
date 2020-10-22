@@ -28,5 +28,7 @@ protected:
 	virtual void BeginPlay() override;
 	UFUNCTION()
 	void TakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigatedBy, AActor* DamageCauser);
-		
+	
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+	bool Vulnerable;
 };
