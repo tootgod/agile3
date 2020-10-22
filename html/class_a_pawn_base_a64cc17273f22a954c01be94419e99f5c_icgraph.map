@@ -1,0 +1,5 @@
+<map id="APawnBase::RotateTurret" name="APawnBase::RotateTurret">
+<area shape="rect" id="node1" title=" " alt="" coords="181,31,353,57"/>
+<area shape="rect" id="node2" href="$class_a_pawn_tank.html#a26cb6c25f5cff55eee52dd094f37c21a" title=" " alt="" coords="8,5,131,32"/>
+<area shape="rect" id="node3" href="$class_a_pawn_turret.html#afe1b550cb34683ff43503a77d94417f7" title=" " alt="" coords="5,56,133,83"/>
+</map>
