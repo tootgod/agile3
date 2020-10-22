@@ -6,7 +6,7 @@ var dir_24992e993d9faa276fcbb8c3a1ce6a58 =
     [ "Pawns", "dir_65d2794956bc97cf24040c3df45ece2e.html", "dir_65d2794956bc97cf24040c3df45ece2e" ],
     [ "PlayerControllerBase.cpp", "_player_controller_base_8cpp.html", null ],
     [ "PlayerControllerBase.h", "_player_controller_base_8h.html", [
-      [ "APlayerControllerBase", "class_a_player_controller_base.html", null ]
+      [ "APlayerControllerBase", "class_a_player_controller_base.html", "class_a_player_controller_base" ]
     ] ],
     [ "ToonTanks.Build.cs", "_toon_tanks_8_build_8cs.html", [
       [ "ToonTanks", "class_toon_tanks.html", "class_toon_tanks" ]

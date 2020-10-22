@@ -97,37 +97,42 @@ $(document).ready(function(){initNavTree('_tank_game_mode_base_8h_source.html','
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">class </span><a class="code" href="class_a_pawn_turret.html">APawnTurret</a>;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_a_pawn_tank.html">APawnTank</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;UCLASS()</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html">   12</a></span>&#160;class TOONTANKS_API <a class="code" href="class_a_tank_game_mode_base.html">ATankGameModeBase</a> : public AGameModeBase</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GENERATED_BODY()</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_a_pawn_tank.html">APawnTank</a>* PlayerTank;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    int32 TargetTurrets = 0;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    int32 GetTargetTurretCount();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> HandleGameStart();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> HandleGameOver(<span class="keywordtype">bool</span> PlayerWon);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="class_a_player_controller_base.html">APlayerControllerBase</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;UCLASS()</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html">   13</a></span>&#160;class TOONTANKS_API <a class="code" href="class_a_tank_game_mode_base.html">ATankGameModeBase</a> : public AGameModeBase</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    GENERATED_BODY()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_a_pawn_tank.html">APawnTank</a>* PlayerTank;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    int32 TargetTurrets = 0;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_a_player_controller_base.html">APlayerControllerBase</a>* PlayerControllerRef;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    int32 GetTargetTurretCount();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> HandleGameStart();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> HandleGameOver(<span class="keywordtype">bool</span> PlayerWon);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> ActorDied (AActor* DeadActor);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> ActorDied (AActor* DeadActor);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_a_pawn_tank.html#a8166c81e3f52b7227c59d25096aca6e1">BeginPlay</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    UFUNCTION(BlueprintImplementableEvent)</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html#a23818c3baf0c2989546588f786fcff1c">   32</a></span>&#160;    void GameStart();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    UFUNCTION(BlueprintImplementableEvent)</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html#a8eb8a9349dc2b2f86235d77f7090f227">   34</a></span>&#160;    <span class="keywordtype">void</span> GameOver(<span class="keywordtype">bool</span> PlayerWon);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = <span class="stringliteral">&quot;GameLoop&quot;</span>)</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html#aaa7df7a9e6775b6c64609f8340576cbd">   33</a></span>&#160;    int32 StartDelay = 3;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    virtual <span class="keywordtype">void</span> BeginPlay() override;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    UFUNCTION(BlueprintImplementableEvent)</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html#a23818c3baf0c2989546588f786fcff1c">   37</a></span>&#160;    <span class="keywordtype">void</span> GameStart();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    UFUNCTION(BlueprintImplementableEvent)</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_a_tank_game_mode_base.html#a8eb8a9349dc2b2f86235d77f7090f227">   39</a></span>&#160;    <span class="keywordtype">void</span> GameOver(<span class="keywordtype">bool</span> PlayerWon);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_a_pawn_tank_html"><div class="ttname"><a href="class_a_pawn_tank.html">APawnTank</a></div><div class="ttdef"><b>Definition:</b> <a href="_pawn_tank_8h_source.html#l00013">PawnTank.h:14</a></div></div>
-<div class="ttc" id="aclass_a_pawn_tank_html_a8166c81e3f52b7227c59d25096aca6e1"><div class="ttname"><a href="class_a_pawn_tank.html#a8166c81e3f52b7227c59d25096aca6e1">APawnTank::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_tank_8cpp_source.html#l00018">PawnTank.cpp:18</a></div></div>
-<div class="ttc" id="aclass_a_tank_game_mode_base_html"><div class="ttname"><a href="class_a_tank_game_mode_base.html">ATankGameModeBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_tank_game_mode_base_8h_source.html#l00012">TankGameModeBase.h:13</a></div></div>
+<div class="ttc" id="aclass_a_tank_game_mode_base_html"><div class="ttname"><a href="class_a_tank_game_mode_base.html">ATankGameModeBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_tank_game_mode_base_8h_source.html#l00013">TankGameModeBase.h:14</a></div></div>
 <div class="ttc" id="aclass_a_pawn_turret_html"><div class="ttname"><a href="class_a_pawn_turret.html">APawnTurret</a></div><div class="ttdef"><b>Definition:</b> <a href="_pawn_turret_8h_source.html#l00012">PawnTurret.h:13</a></div></div>
+<div class="ttc" id="aclass_a_player_controller_base_html"><div class="ttname"><a href="class_a_player_controller_base.html">APlayerControllerBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_player_controller_base_8h_source.html#l00013">PlayerControllerBase.h:14</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

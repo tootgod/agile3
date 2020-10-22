@@ -93,61 +93,70 @@ $(document).ready(function(){initNavTree('_pawn_base_8cpp_source.html',''); init
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_pawn_base_8h.html">PawnBase.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Components/CapsuleComponent.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_projectile_base_8h.html">ToonTanks/Actors/ProjectileBase.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// Sets default values</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">    9</a></span>&#160;<a class="code" href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">APawnBase::APawnBase</a>()</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    CapsuleComp = CreateDefaultSubobject&lt;UCapsuleComponent&gt;(TEXT(<span class="stringliteral">&quot;Capsule Collider&quot;</span>));</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    RootComponent = CapsuleComp;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    BaseMesh = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Base Mesh&quot;</span>));</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    BaseMesh-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    TurretMesh = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Turret Mesh&quot;</span>));</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    TurretMesh-&gt;SetupAttachment(BaseMesh);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    ProjectileSpawnPoint = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;Projectile Spawn Point&quot;</span>));</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    ProjectileSpawnPoint-&gt;SetupAttachment(TurretMesh);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">   27</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">APawnBase::RotateTurret</a>(FVector LookAtTarget) </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    FVector LookatTargetClean = FVector(LookAtTarget.X,LookAtTarget.Y,TurretMesh-&gt;GetComponentLocation().Z);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    FVector StartLocation = TurretMesh-&gt;GetComponentLocation();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    FRotator TurretRotation = FVector(FVector(LookatTargetClean - StartLocation)).Rotation();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    TurretMesh-&gt;SetWorldRotation(TurretRotation);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_health_component_8h.html">ToonTanks/Components/HealthComponent.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Kismet/GameplayStatics.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Sets default values</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">   11</a></span>&#160;<a class="code" href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">APawnBase::APawnBase</a>()</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    CapsuleComp = CreateDefaultSubobject&lt;UCapsuleComponent&gt;(TEXT(<span class="stringliteral">&quot;Capsule Collider&quot;</span>));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    RootComponent = CapsuleComp;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    BaseMesh = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Base Mesh&quot;</span>));</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    BaseMesh-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    TurretMesh = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Turret Mesh&quot;</span>));</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    TurretMesh-&gt;SetupAttachment(BaseMesh);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    ProjectileSpawnPoint = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;Projectile Spawn Point&quot;</span>));</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ProjectileSpawnPoint-&gt;SetupAttachment(TurretMesh);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//HealthComponent = CreateDefaultSubobject&lt;UHealthComponent&gt;(TEXT(&quot;Health Component&quot;));</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">APawnBase::RotateTurret</a>(FVector LookAtTarget) </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    FVector LookatTargetClean = FVector(LookAtTarget.X,LookAtTarget.Y,TurretMesh-&gt;GetComponentLocation().Z);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    FVector StartLocation = TurretMesh-&gt;GetComponentLocation();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">   36</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">APawnBase::Fire</a>() </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span>(ProjectileClass)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        FVector SpawnLocation = ProjectileSpawnPoint-&gt;GetComponentLocation();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        FRotator SpawnRotation = ProjectileSpawnPoint-&gt;GetComponentRotation();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="class_a_projectile_base.html">AProjectileBase</a>* TempProjectile = GetWorld()-&gt;SpawnActor&lt;<a class="code" href="class_a_projectile_base.html">AProjectileBase</a>&gt;(ProjectileClass, SpawnLocation, SpawnRotation);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        TempProjectile-&gt;SetOwner(<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">APawnBase::HandleDestruction</a>() </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    FRotator TurretRotation = FVector(FVector(LookatTargetClean - StartLocation)).Rotation();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    TurretMesh-&gt;SetWorldRotation(TurretRotation);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">APawnBase::Fire</a>() </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span>(ProjectileClass)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        FVector SpawnLocation = ProjectileSpawnPoint-&gt;GetComponentLocation();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        FRotator SpawnRotation = ProjectileSpawnPoint-&gt;GetComponentRotation();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="class_a_projectile_base.html">AProjectileBase</a>* TempProjectile = GetWorld()-&gt;SpawnActor&lt;<a class="code" href="class_a_projectile_base.html">AProjectileBase</a>&gt;(ProjectileClass, SpawnLocation, SpawnRotation);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        TempProjectile-&gt;SetOwner(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">APawnBase::HandleDestruction</a>() </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    UGameplayStatics::SpawnEmitterAtLocation(<span class="keyword">this</span>, DeathParticle, GetActorLocation());</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    UGameplayStatics::PlaySoundAtLocation(<span class="keyword">this</span>, DeathSound, GetActorLocation());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    GetWorld()-&gt;GetFirstPlayerController()-&gt;ClientPlayCameraShake(DeathShake);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_a_projectile_base_html"><div class="ttname"><a href="class_a_projectile_base.html">AProjectileBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_projectile_base_8h_source.html#l00012">ProjectileBase.h:13</a></div></div>
 <div class="ttc" id="a_projectile_base_8h_html"><div class="ttname"><a href="_projectile_base_8h.html">ProjectileBase.h</a></div></div>
-<div class="ttc" id="aclass_a_pawn_base_html_a64cc17273f22a954c01be94419e99f5c"><div class="ttname"><a href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">APawnBase::RotateTurret</a></div><div class="ttdeci">void RotateTurret(FVector LookAtTarget)</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00027">PawnBase.cpp:27</a></div></div>
-<div class="ttc" id="aclass_a_pawn_base_html_a4f193d6caa427f1eb87a2afdae7cf4f2"><div class="ttname"><a href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">APawnBase::HandleDestruction</a></div><div class="ttdeci">virtual void HandleDestruction()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00048">PawnBase.cpp:48</a></div></div>
+<div class="ttc" id="a_health_component_8h_html"><div class="ttname"><a href="_health_component_8h.html">HealthComponent.h</a></div></div>
+<div class="ttc" id="aclass_a_pawn_base_html_a64cc17273f22a954c01be94419e99f5c"><div class="ttname"><a href="class_a_pawn_base.html#a64cc17273f22a954c01be94419e99f5c">APawnBase::RotateTurret</a></div><div class="ttdeci">void RotateTurret(FVector LookAtTarget)</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00031">PawnBase.cpp:31</a></div></div>
+<div class="ttc" id="aclass_a_pawn_base_html_a4f193d6caa427f1eb87a2afdae7cf4f2"><div class="ttname"><a href="class_a_pawn_base.html#a4f193d6caa427f1eb87a2afdae7cf4f2">APawnBase::HandleDestruction</a></div><div class="ttdeci">virtual void HandleDestruction()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00052">PawnBase.cpp:52</a></div></div>
 <div class="ttc" id="a_pawn_base_8h_html"><div class="ttname"><a href="_pawn_base_8h.html">PawnBase.h</a></div></div>
-<div class="ttc" id="aclass_a_pawn_base_html_a46941ede14f83164d71ac8be86abdd16"><div class="ttname"><a href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">APawnBase::APawnBase</a></div><div class="ttdeci">APawnBase()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00009">PawnBase.cpp:9</a></div></div>
-<div class="ttc" id="aclass_a_pawn_base_html_a65f04ee3b63757afd44e83daaaab4ac8"><div class="ttname"><a href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">APawnBase::Fire</a></div><div class="ttdeci">void Fire()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00036">PawnBase.cpp:36</a></div></div>
+<div class="ttc" id="aclass_a_pawn_base_html_a46941ede14f83164d71ac8be86abdd16"><div class="ttname"><a href="class_a_pawn_base.html#a46941ede14f83164d71ac8be86abdd16">APawnBase::APawnBase</a></div><div class="ttdeci">APawnBase()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00011">PawnBase.cpp:11</a></div></div>
+<div class="ttc" id="aclass_a_pawn_base_html_a65f04ee3b63757afd44e83daaaab4ac8"><div class="ttname"><a href="class_a_pawn_base.html#a65f04ee3b63757afd44e83daaaab4ac8">APawnBase::Fire</a></div><div class="ttdeci">void Fire()</div><div class="ttdef"><b>Definition:</b> <a href="_pawn_base_8cpp_source.html#l00040">PawnBase.cpp:40</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

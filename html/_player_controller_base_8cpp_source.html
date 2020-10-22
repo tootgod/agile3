@@ -92,8 +92,24 @@ $(document).ready(function(){initNavTree('_player_controller_base_8cpp_source.ht
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_player_controller_base_8h.html">PlayerControllerBase.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_a_player_controller_base.html#acbe81bfe4a602259f28e48c0d7994bfc">    7</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_a_player_controller_base.html#acbe81bfe4a602259f28e48c0d7994bfc">APlayerControllerBase::SetPlayerEnabledState</a>(<span class="keywordtype">bool</span> SetPlayerEnabled) </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">if</span>(SetPlayerEnabled)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        GetPawn()-&gt;EnableInput(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        GetPawn()-&gt;DisableInput(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    bShowMouseCursor = SetPlayerEnabled;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_a_player_controller_base_html_acbe81bfe4a602259f28e48c0d7994bfc"><div class="ttname"><a href="class_a_player_controller_base.html#acbe81bfe4a602259f28e48c0d7994bfc">APlayerControllerBase::SetPlayerEnabledState</a></div><div class="ttdeci">void SetPlayerEnabledState(bool SetPlayerEnabled)</div><div class="ttdef"><b>Definition:</b> <a href="_player_controller_base_8cpp_source.html#l00007">PlayerControllerBase.cpp:7</a></div></div>
 <div class="ttc" id="a_player_controller_base_8h_html"><div class="ttname"><a href="_player_controller_base_8h.html">PlayerControllerBase.h</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
